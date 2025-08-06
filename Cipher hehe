@@ -15,7 +15,8 @@ while True:
             print('Welcome to Caesar Cipher')
             text = input('Now enter your text: ')
             key_number = input('Enter your shifting number: ')
-            caesar()
+            Caesar(text, key_number)
+            exit()
         elif method.lower() == 'vigenere':
             vigenere()
         else:
