@@ -1,0 +1,27 @@
+# Cipher who encrypts, with two way: Caesar and Vigenere Ciphing.
+# Note: Only encrypts
+
+    
+while True:
+    print("\nWelcome to Cipher Encryptor!")
+    print("\nThe tool that allows you to encrypt your text using two different methods:)")
+    print("1. Caesar Cipher: A simple substitution cipher where each letter is shifted by a certain number.")
+    print("2. Vigenere Cipher: A more advanced encryption method using a keyword to shift letters.")
+    entrance = input('\nDo you wish to proceed? Y/N \n')
+
+    while entrance.lower() == 'y' or entrance.lower() == 'yes':
+        method = input("Choose the encryption method: Caesar/Vigenere\n")
+        if method.lower() == 'caesar':
+            print('Welcome to Caesar Cipher')
+            text = input('Now enter your text: ')
+            key_number = input('Enter your shifting number: ')
+            caesar()
+        elif method.lower() == 'vigenere':
+            vigenere()
+        else:
+            print('Invalid input, come again.')
+    if entrance.lower() == 'n' or entrance.lower() == 'no':
+        print('\nExiting the program.')
+        exit()
+    else:
+        print('\nInvalid Input, come again.')
