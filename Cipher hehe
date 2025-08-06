@@ -1,22 +1,38 @@
 # Cipher who encrypts, with two way: Caesar and Vigenere Ciphing.
 # Note: Only encrypts
 
-    
+ 
+def Caesar(text, key_number):
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    encrypted = ''
+    for char in text.lower():
+        if char in alphabet:
+            index = alphabet.index(char)
+            shifted_index = (index + key_number) % 26
+        #print(f'{index} : {shifted_index}')
+            encrypted += alphabet[shifted_index]
+        else:
+            encrypted += char
+    print('\n' + encrypted)
+    exit()
+
 while True:
-    print("\nWelcome to Cipher Encryptor!")
+    print("\nWelcome to Encryptor!")
     print("\nThe tool that allows you to encrypt your text using two different methods:)")
     print("1. Caesar Cipher: A simple substitution cipher where each letter is shifted by a certain number.")
     print("2. Vigenere Cipher: A more advanced encryption method using a keyword to shift letters.")
     entrance = input('\nDo you wish to proceed? Y/N \n')
 
     while entrance.lower() == 'y' or entrance.lower() == 'yes':
-        method = input("Choose the encryption method: Caesar/Vigenere\n")
+        method = input('\nChoose the encryption method: Caesar/Vigenere\n')
         if method.lower() == 'caesar':
-            print('Welcome to Caesar Cipher')
+            print('\nWelcome to Caesar Cipher')
             text = input('Now enter your text: ')
             key_number = input('Enter your shifting number: ')
-            Caesar(text, key_number)
-            exit()
+            if not key_number.isdigit():
+                print('Invalid Input, come again.')
+                continue
+            Caesar(text, int(key_number))
         elif method.lower() == 'vigenere':
             vigenere()
         else:
@@ -26,3 +42,5 @@ while True:
         exit()
     else:
         print('\nInvalid Input, come again.')
+        
+
