@@ -1,7 +1,6 @@
 # Cipher who encrypts, with two way: Caesar and Vigenere Ciphing.
 # Note: Only encrypts
 
- 
 def Caesar(text, key_number):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     encrypted = ''
@@ -16,6 +15,26 @@ def Caesar(text, key_number):
     print('\n' + encrypted)
     exit()
 
+def Vigenere(text, password, direction=1):
+    pw_index = 0
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    encrypted = ''
+    # Differentiate the non-letter or letter
+    for char in text.lower():
+        if not char.isalpha():
+            encrypted += char
+        # Letter goes here = Finding the right key to be shifted
+        vigi_message = password[pw_index % len(password)]
+        pw_index += 1
+    
+        # Define the offset and the encrypted
+        offset = alphabet.index(vigi_message)
+        index = alphabet.index(char)
+        new_index = (index + offset*direction) % len(alphabet)
+        encrypted += alphabet[new_index]
+    
+    print (f'\nencrypted')
+    
 while True:
     print("\nWelcome to Encryptor!")
     print("\nThe tool that allows you to encrypt your text using two different methods:)")
@@ -34,7 +53,10 @@ while True:
                 continue
             Caesar(text, int(key_number))
         elif method.lower() == 'vigenere':
-            vigenere()
+            print('\nWelcome to Vigenere Cipher')
+            text = input('\nNow enter your text: ')
+            password = input('Enter your shifting word password: ')
+            Vigenere(text, password)
         else:
             print('Invalid input, come again.')
     if entrance.lower() == 'n' or entrance.lower() == 'no':
